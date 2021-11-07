@@ -123,6 +123,8 @@ class ArchProperties
     DeriveFanouts();
     
     auto num_storage_levels = specs_.topology.NumStorageLevels();
+
+    std::cout << "Total tiling levels: storage levels = " << num_storage_levels << "\n"; //EDIT
     
     // one temporal partition for each storage level
     num_temporal_tiling_levels_ = num_storage_levels;
@@ -142,6 +144,7 @@ class ArchProperties
       if (is_spatial)
       {
         // This is a spatial level.
+        std::cout << "  Spatial Levels: " << i << "\n"; //EDIT
         spatial_mask_.push_back(true);
         twoD_spatial_mask_.push_back(is_spatial_2D);
         spatial_to_tiling_map_[i] = cur_tiling_level;
@@ -159,7 +162,8 @@ class ArchProperties
     }
 
     num_total_tiling_levels_ = spatial_mask_.size();
-    assert(twoD_spatial_mask_.size() == num_total_tiling_levels_);    
+    std::cout << "Total tiling levels: from spatial mask = " << num_total_tiling_levels_ << "\n"; //EDIT
+    assert(twoD_spatial_mask_.size() == num_total_tiling_levels_);
   }
 
   //

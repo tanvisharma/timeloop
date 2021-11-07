@@ -743,6 +743,7 @@ Topology::Specs Topology::ParseSpecs(config::CompoundConfigNode storage,
   {
     auto level_specs_p = std::make_shared<BufferLevel::Specs>(BufferLevel::ParseSpecs(storage[i], 0));
     specs.AddLevel(i, std::static_pointer_cast<LevelSpecs>(level_specs_p));
+    std::cout << "Level number: " << i << *level_specs_p; //EDIT
 
     // For each storage level, parse and extract an inferred network spec from the storage config.
     // A network object corresponding to this spec will only be instantiated if a user-specified

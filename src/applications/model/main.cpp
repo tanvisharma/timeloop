@@ -85,7 +85,7 @@ int main(int argc, char* argv[])
   auto config = new config::CompoundConfig(input_files);
 
   Application application(config, output_dir);
-  
+  std::cout << "Application created!\n" << std::endl; //NEW
   application.Run();
 
   return 0;

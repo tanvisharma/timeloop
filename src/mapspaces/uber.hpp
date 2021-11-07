@@ -147,6 +147,7 @@ class Uber : public MapSpace
     auto user_max_factors = constraints_.MaxFactors();
 
     assert(user_factors.size() <= arch_props_.TilingLevels());
+    std::cout << " --- Tiling levels: " << arch_props_.TilingLevels() << " ----";
 
     // We'll initialize the index_factorization_space_ object here. To do that, we first
     // need to determine the number of factors that *each* problem dimension needs to be
@@ -179,6 +180,7 @@ class Uber : public MapSpace
         {
           auto& dimension = factor.first;
           auto& end = factor.second;
+          std::cout << " --- Factors for Level " << level << "), dimension (" << dimension << ") :" << end << " ---\n";
           if (end == -1)
           {
             assert(!exhausted_um_loops[int(dimension)]);
@@ -203,6 +205,7 @@ class Uber : public MapSpace
         {
           auto& dimension = factor.first;
           auto& max = factor.second;
+          std::cout << " --- Max Factors for Level (" << level << "), dimension (" << dimension << ") :" << max << " ---\n";
           maxfactors[dimension][level] = max;
         }
       }

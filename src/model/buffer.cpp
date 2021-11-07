@@ -455,6 +455,8 @@ EvalStatus BufferLevel::PreEvaluationCheck(
     {
       if (mask[pvi])
       {
+        fail_reason << required_capacity << " : capacity update\n";
+
         required_capacity += working_set_sizes.at(problem::Shape::DataSpaceID(pvi));
       }
     }
